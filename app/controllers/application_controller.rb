@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
 
+   before_action :authenticate_user!
+
+   add_flash_types :success, :danger, :info
+
     private
 
     # Overwriting the sign_out redirect path method

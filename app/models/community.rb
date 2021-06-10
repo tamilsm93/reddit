@@ -1,6 +1,7 @@
 class Community < ApplicationRecord
 
-  validates :name, presence: true
+  validates :name, length: { maximum: 50, 
+                  too_long: "must not greater then 50 " }
    belongs_to :user
 
   # belongs_to :network

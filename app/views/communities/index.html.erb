@@ -6,7 +6,7 @@ create communites her
 </div>
 
 <%= button_to "logout", destroy_user_session_path, method: :delete, class: 'button is-link is-outlined is-pulled-right' %>
-<%= current_user.email %>
+<%= current_user.email if current_user.present? %>
 
 
 
@@ -57,7 +57,7 @@ create communites her
       </div>   
       <%= f.submit "add network" , class: 'button is-success' %>
     <% end %> -->
-    <p style="font-size: 40px;"> Top Trending  </p>
+    <p style="font-size: 40px;"> Trending Communities  </p>
     <% @trends.each_with_index do |trend, index| %>
      <% final_index = index+1 %>
       <p> <%= final_index %> <%=  trend %>  </p>
@@ -66,7 +66,7 @@ create communites her
 
     <hr>
 
-    <p style="font-size: 40px;"> Top Trending  </p>
+    <p style="font-size: 40px;"> Trending answerer  </p>
 
     <%  @top_commenters.each_with_index do |user, index| %>
     <% final_index = index+1 %>

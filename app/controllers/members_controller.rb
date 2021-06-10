@@ -8,12 +8,7 @@ class MembersController < ApplicationController
     def create
        
         @user = current_user 
-        @member = Member.create(member_params) 
-        
-        
-
-        
-        
+        @member = Member.create(member_params)         
     end
 
 

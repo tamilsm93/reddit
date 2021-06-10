@@ -6,7 +6,7 @@ class User < ApplicationRecord
   
   has_many :communities
 
-  has_many :comments, through: :communities
+  has_many :comments
 
   has_many :networks
 

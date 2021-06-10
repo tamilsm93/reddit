@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :upvotes, only: [:index, :new, :create]
 
-  resources :memberships, only: [:new, :create]
+  resources :memberships, only: [:new, :create, :destroy]
 
   resources :roles, only: [:create]
    
