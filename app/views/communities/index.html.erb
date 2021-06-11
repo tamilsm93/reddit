@@ -7,77 +7,62 @@ create communites her
 
 <%= button_to "logout", destroy_user_session_path, method: :delete, class: 'button is-link is-outlined is-pulled-right' %>
 <%= current_user.email if current_user.present? %>
+<div class="columns">
 
-
-
-<% if current_user.present? %>
-<div class="columns" style="margin-top: 30px;">
-  <div class="column">
-    <div class="box" style="width: 500px; margin-left: 150px; ">
-    <%  @user = current_user %>
-    <%= form_with model: @user.communities.build do |f| %>
-   
-        <div class="field">
-          <label class="label">Name</label>
-          <%= f.text_field :name, class: "input", placeholder: 'enter the name' %>
-        </div>      
-      <%= f.submit  'Add communites', class: 'button is-success'  %>
-      <% end %>
-      <% if @communities.present? %>
-      <% @communities.each do |c| %>
-      
-      <p> <%= link_to c.name, comments_path(id: c.id) %> 
-
-        <%= button_to "join", memberships_path(membership: {community_id: c.id, user_id: current_user})  %> </p>
-<!--         
-        <%  if c.user_id.present? %>
-        
-        <%= link_to "joined", class: 'button is-success' %>
-        
-        <% else %>
-      <% end %> -->
-        
-      <% end %>
-      <% end %>
+    <div class="column ">
+    <% @user_posts.each do |post| %>
+    <div class="box" style="width: 500px; margin-left: 320px;" >
+      <h4 class="title is-4 "> <%= post.title.capitalize! %></h4>
+      <hr>
+     <p><%= post.description %></p> 
   </div>
-  </div>
-
- 
-<div class="column">
-  <div class="box" style="width: 500px;">
-
-    <!-- <%= form_with model: @user.networks.build do |f| %>
-    <div class="field">
-        <label class="label">Title</label>
-        <%= f.text_field :title, class: "input", placeholder: 'enter your title' %>
-      </div>  
-      <div class="field">
-        <label class="label">Description</label>
-        <%= f.text_field :tagline, class: "input", placeholder: 'enter your comments' %>
-      </div>   
-      <%= f.submit "add network" , class: 'button is-success' %>
-    <% end %> -->
-    <p style="font-size: 40px;"> Trending Communities  </p>
-    <% @trends.each_with_index do |trend, index| %>
-     <% final_index = index+1 %>
-      <p> <%= final_index %> <%=  trend %>  </p>
-
-    <% end %>
-
-    <hr>
-
-    <p style="font-size: 40px;"> Trending answerer  </p>
-
-    <%  @top_commenters.each_with_index do |user, index| %>
-    <% final_index = index+1 %>
-    <p> <%= final_index %> <%= user %> </p>
-
-    <% end %>
- 
-
-    
+  <% end %>
+    </div>
   
-  </div>
+
+    <div class="column ">
+      <div class="box" style=" width: 350px" >
+        <p style="font-size: 40px;"> Trending Communities  </p>
+        <% @trends.each_with_index do |trend, index| %>
+         <% final_index = index+1 %>
+          <p> <%= final_index %> <%=  trend %>  </p>
+        <% end %>
+        <hr>
+      </div>
+
+      <div class="box" style="width: 350px; ">
+        <%  @user = current_user %>
+        <%= form_with model: @user.communities.build do |f| %>
+       
+            <div class="field">
+              <label class="label">Name</label>
+              <%= f.text_field :name, class: "input", placeholder: 'enter the name' %>
+            </div>      
+          <%= f.submit  'Add communites', class: 'button is-success'  %>
+          <% end %>
+          <% if @communities.present? %>
+          <% @communities.each do |c| %>
+          
+          <p> <%= link_to c.name, comments_path(id: c.id) %> 
+    
+            <%= button_to "join", memberships_path(membership: {community_id: c.id, user_id: current_user})  %> </p>
+          <% end %>
+          <% end %>
+      </div>
+     </div>
+
+     
+      
+  
 </div>
-<% end %>
-</div>
+
+
+
+ 
+
+
+
+
+
+
+

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   
     
     def create 
-        @post = Post.create(post_params)
+        @post = Post.create(post_params)   
     end
 
     private 
