@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   resources :posts, only: [:create, :index]
 
   resources :relationships, only: [:create]
+
+  resources :saveposts, only: [:index, :create]
 end

@@ -7,19 +7,20 @@ create communites her
 
 <%= button_to "logout", destroy_user_session_path, method: :delete, class: 'button is-link is-outlined is-pulled-right' %>
 <%= current_user.email if current_user.present? %>
-<div class="columns">
+<div class="columns " >
 
-    <div class="column ">
+    <div class="column" style="display: flex-wrap;">
     <% @user_posts.each do |post| %>
     <div class="box" style="width: 500px; margin-left: 320px;" >
       <h4 class="title is-4 "> <%= post.title.capitalize! %></h4>
       <hr>
      <p><%= post.description %></p> 
+     <%= button_to "save", saveposts_path(saveposts: {id: post})%>
   </div>
   <% end %>
+  </button>
     </div>
   
-
     <div class="column ">
       <div class="box" style=" width: 350px" >
         <p style="font-size: 40px;"> Trending Communities  </p>
@@ -48,6 +49,10 @@ create communites her
             <%= button_to "join", memberships_path(membership: {community_id: c.id, user_id: current_user})  %> </p>
           <% end %>
           <% end %>
+      </div>
+
+      <div class="box" style="width: 150px;">
+       <%= link_to "savedpost", saveposts_path %>
       </div>
      </div>
 
