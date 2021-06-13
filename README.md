@@ -7,8 +7,8 @@ rake db:migrate
 
 #test user
 
-test@gmail.com
-test123
+li test@gmail.com
+li test123
 
 only admin can create communities
 add the role,user_roles in the console using model(Role, UserRole)
