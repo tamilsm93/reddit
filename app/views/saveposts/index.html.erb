@@ -1,11 +1,10 @@
-<div style="margin-top: 120px;"> 
-  <% @save_posts.each do |post| %>
+
+ <div style="margin-top: 120px;"> 
+  <% @save_posts.each do |posts| %>
   <div class="box" style= " margin-left: 400px; width: 500px; ">
-    <h4 class="title is-4 "> <%= post.title.capitalize! %> </h4>
-     <hr>
- <p> <%= post.description %></p>
-  
+  <% posts.each do |post| %>
+  <p> <%= post %></p>
+  <% end %>
+  </div>
+  <% end %>
 </div>
-<br>
-</div>
-<% end %>
