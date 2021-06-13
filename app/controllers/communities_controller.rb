@@ -1,7 +1,5 @@
 class CommunitiesController < ApplicationController
 
-
-
     def index 
     if current_user.present?
         @communities = Community.all.reverse_order.limit(6)
