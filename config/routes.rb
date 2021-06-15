@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create]
 
   resources :saveposts, only: [:index, :create]
+
+  get 'submit', to: 'communities#submit' 
 end

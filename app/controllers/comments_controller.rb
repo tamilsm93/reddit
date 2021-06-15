@@ -14,12 +14,11 @@ class CommentsController < ApplicationController
 
     def create 
         
-        @community =  Community.find_by(id: params["comment"]["community_id"])
-     
-        if Membership.find_by(user_id: current_user.id, community_id: params[:comment] [:community_id]).present?
+        @community =  Community.find_by(id: params["comment"]["community_id"])     
+        # if Membership.find_by(user_id: current_user.id, community_id: params[:comment] [:community_id]).present?
         @comment = @community.comments.create(comment_params)
         redirect_to comments_path(id: @community)
-        end
+        # end
      
     end
 

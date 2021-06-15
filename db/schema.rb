@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_072802) do
+ActiveRecord::Schema.define(version: 2021_06_13_055857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 2021_06_12_072802) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_save_posts_on_user_id"
   end
 
   create_table "upvotes", force: :cascade do |t|
@@ -143,6 +145,7 @@ ActiveRecord::Schema.define(version: 2021_06_12_072802) do
   add_foreign_key "networks", "users"
   add_foreign_key "posts", "communities"
   add_foreign_key "roles", "users"
+  add_foreign_key "save_posts", "users"
   add_foreign_key "upvotes", "answers"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"

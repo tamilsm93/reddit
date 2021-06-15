@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :memberships
   has_many :communities, through: :memberships
 
+  has_many :save_posts
+
   
   has_many :user_roles
   has_many :roles, through: :user_roles

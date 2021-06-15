@@ -1,47 +1,38 @@
 
 
+<div class="column">
 
-<div class="box" style="width: 600px; margin-left: 450px; margin-top: 30px;">
-  <div class="field">
-    <label class="label"> Question to Answer</label>
-    <%= @comment.title %>
-    <hr>
-    <%= @comment.description %>
-  </div>
-</div>
-
- <%= link_to "Home", communities_path, class: "button is-link is-outlined" %>
-
+  <%= link_to "Home", communities_path, class: "button is-link is-outlined" %>
 
   <div class="box" style="width: 600px; margin-left: 450px; margin-top: 30px;">
-
-    <%= form_with model: @comment.answers.build do |f| %>
-    <%= f.hidden_field :comment_id, value: @comment.id %>
     <div class="field">
-        <label class="label">Tagline</label>
-        <%= f.text_field :tags, class: "input", placeholder: 'enter your title' %>
-      </div>  
-      <div class="field">
-        <label class="label">Description</label>
-        <%= f.text_area :description, class: "textarea", placeholder: 'enter your comments' %>
-      </div>   
-      <%= f.submit "add anwsers" , class: 'button is-success' %>
-    <% end %>
+      <label class="label"> Question to Answer</label>
+      <%= @comment.title %>
+      <hr>
+      <%= @comment.description %>
+    </div>
 
-</div>
+<hr>
 
-<% @answers.each do |a| %>
-<div class="box" style="width: 600px; margin-left: 450px; margin-top: 30px;">
+  <%= form_with model: @comment.answers.build do |f| %>
+  <%= f.hidden_field :comment_id, value: @comment.id %>
+  <div class="field">
+      <label class="label">Tagline</label>
+      <%= f.text_field :tags, class: "input", placeholder: 'enter your title' %>
+    </div>  
+    <div class="field">
+      <label class="label">Description</label>
+      <%= f.text_area :description, class: "textarea", placeholder: 'enter your comments' %>
+    </div>   
+    <%= f.submit "add anwsers" , class: 'button is-success' %>
+  <% end %>
+  <% @answers.each do |a| %>
+
   <div class="field">
     <label class="label"> Desc</label>
     <hr>
     <%= a.description %>
-   
-  
-     
-     
     <hr>
-
   </div>
   <%= form_with model: @answer.upvotes.build do |f| %>  
   <%= f.hidden_field :answer_id, value: a.id %>
@@ -50,5 +41,11 @@
 <% end %>
 <%=  a.upvotes.count %>
 <%= a.created_at %>
-</div>
 <% end %>
+
+  </div>
+</div>
+
+
+
+

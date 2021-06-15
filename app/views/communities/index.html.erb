@@ -7,9 +7,17 @@ create communites her
 
 <%= button_to "logout", destroy_user_session_path, method: :delete, class: 'button is-link is-outlined is-pulled-right' %>
 <%= current_user.email if current_user.present? %>
-<div class="columns " >
+
+ 
+
+<div class="columns ">
   
+  
+
   <div class="column">
+    <div class="box" style="width: 500px; margin-left: 320px; text-align:center">
+      <%= link_to 'Ask Questions', submit_path %>
+    </div>
     <% @user_posts.each do |post| %>
     <div class="box" style="width: 500px; margin-left: 320px;" >
      

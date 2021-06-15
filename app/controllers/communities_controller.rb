@@ -11,7 +11,7 @@ class CommunitiesController < ApplicationController
  
        @current_user_groups = current_user.communities
        @posts = Post.pluck(:community_id)
-       @user_posts =  Community.where(id: @posts).includes(:comments).map {|com| com.comments}.flatten
+       @user_posts =  current_user.communities.where(id: @posts).includes(:comments).map {|com| com.comments}.flatten
       
     end
     end
@@ -23,14 +23,18 @@ class CommunitiesController < ApplicationController
          roles = current_user.roles
          if roles.first.name == 'admin'
             @community = current_user.communities.create(community_params) 
+            redirect_to communities_path
+         else
+            render 'check'
           end
-          redirect_to communities_path
+         
     end
 
-    
+    def submit
+        @community = current_user.communities.new 
+ 
 
-
-    private 
+    end 
     def community_params 
         params.require(:community).permit(:name, :description).merge(user_id: current_user.id)
     end
