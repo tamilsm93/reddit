@@ -10,6 +10,8 @@ gem 'pg', '~> 1.2', '>= 1.2.3'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 
+gem "font-awesome-rails"
+
 gem 'devise', '~> 4.2'
 
 gem 'bulma-rails', "~> 0.9.1"

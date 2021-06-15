@@ -15,10 +15,14 @@
     <%= render 'form' %>
     <% @comments.each do |c| %>
     <div class="field">
-      <label class="label"><%= link_to c.title, answers_path(id: c.id) %></label>
+      <label class="label"> <%= c.title %> </label>
       <p>  </p>
       <hr>
       <%= c.description %>
+      <br>
+      <span class="tag">
+        <%= link_to 'comment', answers_path(id: c.id) %>
+      </span>
     </div>
   <% end %>
 </div>

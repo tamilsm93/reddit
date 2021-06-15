@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
         @comment = Comment.find_by(id: params[:id])
         @user = User.find_by(id: params["user_id"])       
         
-        @answers = Answer.all.order("created_at Desc")
+        @answers = @comment.answers.all.order("created_at Desc")
         @answer = @comment.answers.new
     end
 

@@ -24,7 +24,15 @@ create communites her
       <h4 class="title is-4"> <%= post.title %></h4>
       <hr>
      <p><%= post.description %></p> 
-     <%= button_to "save", saveposts_path(saveposts: {id: post})%>
+     <br>
+     <span class="tag">
+       <%= post.answers.count %>  <%= link_to 'comment', answers_path(id: post.id) %> 
+      </span>
+      <div style="display: inline-block; padding: 10px;" >
+        <%= button_to "save", saveposts_path(saveposts: {id: post}) %>
+          
+     
+     </div>
   </div>
 <% end %>
   </div>
