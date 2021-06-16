@@ -4,9 +4,28 @@ create communites her
 <div style="margin-top: 20px; margin-left: 100px;">
  <%= link_to 'Home', home_index_path, class: "button is-link is-outlined" %>
 </div>
-
-<%= button_to "logout", destroy_user_session_path, method: :delete, class: 'button is-link is-outlined is-pulled-right' %>
 <%= current_user.email if current_user.present? %>
+<div class="dropdown is-hoverable is-pulled-right">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+      <span> <%= current_user.username %></span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+         <%= link_to 'profile', edit_user_path(id: current_user.id) %>
+        </div>
+        <div class="dropdown-item">
+          <%= link_to "logout", destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+    </div>
+</div>
+
 
  
 
@@ -29,9 +48,7 @@ create communites her
        <%= post.answers.count %>  <%= link_to 'comment', answers_path(id: post.id) %> 
       </span>
       <div style="display: inline-block; padding: 10px;" >
-        <%= button_to "save", saveposts_path(saveposts: {id: post}) %>
-          
-     
+        <%= button_to "save", saveposts_path(saveposts: {id: post}) %> 
      </div>
   </div>
 <% end %>

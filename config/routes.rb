@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: "communities#index"
 
-  resources :users,  only: [:index, :new, :create, :update]
+  resources :users
 
   resources :communities, only: [:index, :new, :create, :update]
 
@@ -28,5 +28,9 @@ Rails.application.routes.draw do
 
   resources :saveposts, only: [:index, :create]
 
-  get 'submit', to: 'communities#submit' 
+
+
+  get 'submit', to: 'communities#submit'
+  
+  get 'profile', to: 'communities#profile'
 end

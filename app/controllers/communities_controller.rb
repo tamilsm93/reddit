@@ -30,10 +30,10 @@ class CommunitiesController < ApplicationController
          
     end
 
+  
+
     def submit
         @community = current_user.communities.new 
- 
-
     end 
     def community_params 
         params.require(:community).permit(:name, :description).merge(user_id: current_user.id)
