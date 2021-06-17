@@ -10,10 +10,26 @@ class Community < ApplicationRecord
 
   has_many :memberships
 
+  has_many :answers, through: :comments
+
   has_many :users, through: :memberships
   
   has_many :posts
 
+ 
+  def self.selectItem
+    pluck(:id, :name).reverse.first(10).to_h 
+  end
 
-  # has_many :members, class_name: "User", foreign_key: "member_id"
+  def self.group_communities
+    left_joins(:comments).group("communities.name").count
+   
+  end
+
+
+  def self.user_comments(posts)
+    includes({comments: :answers}).where(id: posts).map {|com| com.comments}.flatten 
+  end
+
+
 end

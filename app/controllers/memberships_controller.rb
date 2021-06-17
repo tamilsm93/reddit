@@ -1,6 +1,7 @@
 class MembershipsController < ApplicationController
 
   def create
+
     @membership = Membership.create(membership_params)
     redirect_to comments_path(id: params[:membership][:community_id])
   end

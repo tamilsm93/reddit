@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
         @comments = @community.comments.all.order("created_at DESC")    
         @comment = @community.comments.new
         @member = Membership.find_by(user_id: current_user.id, community_id: params[:id])
+                
         
     end
 

@@ -45,7 +45,7 @@ create communites her
      <p><%= post.description %></p> 
      <br>
      <span class="tag">
-       <%= post.answers.count %>  <%= link_to 'comment', answers_path(id: post.id) %> 
+       <%= post.answers.size %>  <%= link_to 'comment', answers_path(id: post.id) %> 
       </span>
       <div style="display: inline-block; padding: 10px;" >
         <%= button_to "save", saveposts_path(saveposts: {id: post}) %> 
@@ -76,11 +76,11 @@ create communites her
           <%= f.submit  'Add communites', class: 'button is-success'  %>
           <% end %>
           <% if @communities.present? %>
-          <% @communities.each do |c| %>
+          <% @communities.each do |key, name| %>
           
-          <p> <%= link_to c.name, comments_path(id: c.id) %> 
-    
-            <%= button_to "join", memberships_path(membership: {community_id: c.id, user_id: current_user})  %> </p>
+           <%= link_to name, comments_path(id: key) %> 
+          <%= button_to "join", memberships_path(membership: {community_id: key, user_id: current_user})  %> 
+ 
           <% end %>
           <% end %>
       </div>

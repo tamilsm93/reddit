@@ -1,19 +1,16 @@
 class CommunitiesController < ApplicationController
 
     def index 
-    if current_user.present?
-        @communities = Community.all.reverse_order.limit(6)
-        @community = current_user.communities.new
  
+       @communities = Community.selectItem
+       @community = current_user.communities.new
+       @list= Community.group_communities
+       
+       @trends = @list.sort_by{|k,v| v }.reverse.first(3).collect {|val| val[0]} 
 
-        @list_communities= Community.left_joins(:comments).group("communities.name").count
-        @trends = @list_communities.sort_by{|k,v| v }.reverse.first(3).collect {|val| val[0]}
- 
-       @current_user_groups = current_user.communities
-       @posts = Post.pluck(:community_id)
-       @user_posts =  current_user.communities.where(id: @posts).includes(:comments).map {|com| com.comments}.flatten
-      
-    end
+       posts = Post.pluck(:community_id)
+       @user_posts =  current_user.communities.user_comments(posts)
+   
     end
 
     def new  

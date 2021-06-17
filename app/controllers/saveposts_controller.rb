@@ -1,7 +1,7 @@
 class SavepostsController < ApplicationController
 
 	def index
-	  @save_posts = current_user.save_posts.all.pluck(:title, :description)		
+	  @save_posts = current_user.save_posts.all.pluck(:title, :description).reverse	
 	end
  
 
