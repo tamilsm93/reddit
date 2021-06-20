@@ -9,6 +9,10 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+username :tamilcrea
+host :localhost
+
+password :server101
 development:
   <<: *default
   database: reddit_developemnt

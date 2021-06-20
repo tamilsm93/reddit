@@ -16,19 +16,15 @@ class Community < ApplicationRecord
   
   has_many :posts
 
+  # scope: group_communities, -> { pluck(:id, :name).reverse.to_h }
+
+  scope :group_communities, -> {left_joins(:comments).group("communities.name").count}
+
+  scope :user_comments, -> (posts) { includes({comments: :answers}).where(id: posts).map {|com| com.comments}.flatten }
+
  
   def self.selectItem
-    pluck(:id, :name).reverse.first(10).to_h 
-  end
-
-  def self.group_communities
-    left_joins(:comments).group("communities.name").count
-   
-  end
-
-
-  def self.user_comments(posts)
-    includes({comments: :answers}).where(id: posts).map {|com| com.comments}.flatten 
+    pluck(:id, :name).reverse.to_h 
   end
 
 
