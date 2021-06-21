@@ -4,12 +4,12 @@ class Community < ApplicationRecord
                   too_long: "must not greater then 50 " }
    belongs_to :user
 
-  # belongs_to :network
 
-  has_many :comments, dependent: :destroy
 
+  
   has_many :memberships
-
+  
+  has_many :comments, dependent: :destroy
   has_many :answers, through: :comments
 
   has_many :users, through: :memberships
@@ -18,7 +18,7 @@ class Community < ApplicationRecord
 
   # scope: group_communities, -> { pluck(:id, :name).reverse.to_h }
 
-  scope :group_communities, -> {left_joins(:comments).group("communities.name").count}
+
 
   scope :user_comments, -> (posts) { includes({comments: :answers}).where(id: posts).map {|com| com.comments}.flatten }
 
@@ -26,6 +26,5 @@ class Community < ApplicationRecord
   def self.selectItem
     pluck(:id, :name).reverse.to_h 
   end
-
 
 end

@@ -17,8 +17,6 @@ class AnswersController < ApplicationController
         
         @comment = Comment.find_by(id: params["answer"]["comment_id"])
         @answer = @comment.answers.create(answer_params)
-
-
          
         redirect_to answers_path({id: @comment, user_id: current_user})
 

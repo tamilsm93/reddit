@@ -3,6 +3,6 @@ class Answer < ApplicationRecord
 
   has_many :upvotes
 
-  belongs_to :community
+  # belongs_to :community
 
 end

@@ -57,10 +57,14 @@ create communites her
   
     <div class="column ">
       <div class="box" style=" width: 350px" >
-        <p style="font-size: 40px;"> Trending Communities  </p>
-        <% @trends.each_with_index do |trend, index| %>
-         <% final_index = index+1 %>
-          <p> <%= final_index %> <%=  trend %>  </p>
+        <label class="label">Trending communities</label>
+        <% @trends.each do |key, value| %>
+         <p> <%= key %> </p> 
+        <% end %>
+        <hr>
+        <label class="label">Trending users</label>
+        <% @top_comments.each do |key, value| %>
+        <p> <%= key %> </p>
         <% end %>
         <hr>
       </div>

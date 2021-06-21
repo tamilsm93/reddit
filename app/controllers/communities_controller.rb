@@ -4,10 +4,18 @@ class CommunitiesController < ApplicationController
  
        @communities = Community.selectItem
        @community = current_user.communities.new
-       @list= Community.group_communities
-       
-       @trends = @list.sort_by{|k,v| v }.reverse.first(3).collect {|val| val[0]} 
 
+       @trends = User.joins(communities: :comments).group("communities.name")
+                    .count
+                    .sort_by { |k,v| v }
+                    .reverse.first(3).to_h
+  
+       
+       @top_comments= User.joins(communities: [comments: :answers])
+                           .group("users.email")
+                           .count
+                           .sort_by {|k,v| v}
+                           .reverse.first(3).to_h     
        posts = Post.pluck(:community_id)
        @user_posts =  current_user.communities.user_comments(posts)
    
