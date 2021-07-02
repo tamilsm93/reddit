@@ -30,18 +30,17 @@ create communites her
  
 
 <div class="columns ">
-  
-  
-
   <div class="column">
     <div class="box" style="width: 500px; margin-left: 320px; text-align:center">
-      <%= link_to 'Ask Questions', submit_path %>
+      <%= link_to 'Create Post', submit_path %>
     </div>
     <% @user_posts.each do |post| %>
     <div class="box" style="width: 500px; margin-left: 320px;" >
      
       <h4 class="title is-4"> <%= post.title %></h4>
       <hr>
+     
+      
      <p><%= post.description %></p> 
      <br>
      <span class="tag">
@@ -55,16 +54,18 @@ create communites her
   </div>
  
   
-    <div class="column ">
+    <div class="column">
       <div class="box" style=" width: 350px" >
         <label class="label">Trending communities</label>
-        <% @trends.each do |key, value| %>
-         <p> <%= key %> </p> 
+        <% @trends.keys.each_with_index do |key, index| %>
+         <% index = index+1 %>
+         <p>  <%= index %>.<%= key %> </p> 
         <% end %>
         <hr>
         <label class="label">Trending users</label>
-        <% @top_comments.each do |key, value| %>
-        <p> <%= key %> </p>
+        <% @top_comments.keys.each_with_index do |key, index| %>
+        <% index = index+1 %>
+        <p> <%= index %>. <%= key %> </p>
         <% end %>
         <hr>
       </div>

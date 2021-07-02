@@ -9,7 +9,6 @@ class CommunitiesController < ApplicationController
                     .count
                     .sort_by { |k,v| v }
                     .reverse.first(3).to_h
-  
        
        @top_comments= User.joins(communities: [comments: :answers])
                            .group("users.email")

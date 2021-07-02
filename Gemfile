@@ -12,6 +12,8 @@ gem 'puma', '~> 5.0'
 
 gem "font-awesome-rails"
 
+
+
 gem 'devise', '~> 4.2'
 
 gem 'bulma-rails', "~> 0.9.1"

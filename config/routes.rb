@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :communities, only: [:index, :new, :create, :update]
 
+  get 'usercomments', to: 'communities#usercomments'
+
   resources :comments, only: [:index, :new, :create]
 
   resources :answers, only: [:index, :new, :create]
@@ -27,6 +29,8 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create]
 
   resources :saveposts, only: [:index, :create]
+
+  resources :codes, only: [:index, :create]
 
 
 
