@@ -1,7 +1,6 @@
 class MembershipsController < ApplicationController
 
   def create
-
     @membership = Membership.create(membership_params)
     redirect_to comments_path(id: params[:membership][:community_id])
   end
@@ -12,8 +11,7 @@ class MembershipsController < ApplicationController
     redirect_to communities_path
   end
 
-  private 
-
+  private
   def membership_params
     params.require(:membership).permit(:user_id, :community_id)
   end

@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 
-    def index    
-      
+    def index
         @community = Community.find_by(id: params["id"])  
         @comments = @community.comments.all.order("created_at DESC")    
         @comment = @community.comments.new
@@ -18,7 +17,6 @@ class CommentsController < ApplicationController
         @comment = @community.comments.create(comment_params)
         redirect_to comments_path(id: @community)
         # end
-     
     end
 
 

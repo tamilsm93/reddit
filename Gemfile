@@ -12,7 +12,7 @@ gem 'puma', '~> 5.0'
 
 gem "font-awesome-rails"
 
-
+gem "rails-pg-extras"
 
 gem 'devise', '~> 4.2'
 

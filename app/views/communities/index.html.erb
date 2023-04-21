@@ -1,5 +1,4 @@
-
-
+<div id="loader" class="center"></div>
 create communites her 
 <div style="margin-top: 20px; margin-left: 100px;">
  <%= link_to 'Home', home_index_path, class: "button is-link is-outlined" %>
@@ -99,9 +98,20 @@ create communites her
       
   
 </div>
+</body>
 
 
-
+<script type="text/javascript">
+  document.onreadystatechange = function() {
+    if(document.readyState !== "complete"){
+      document.querySelector("body").style.visibility = "hidden"
+      document.querySelector("#loader").style.visibility = "visible"
+    } else {
+      document.querySelector("#loader").style.visibility = "hidden"
+      document.querySelector("body").style.visibility = "visible" 
+    }
+  };
+</script>
  
 
 
