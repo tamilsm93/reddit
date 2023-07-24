@@ -26,23 +26,15 @@
     </div>   
     <%= f.submit "add anwsers" , class: 'button is-success' %>
   <% end %>
+  
   <% @answers.each do |a| %>
-
   <div class="field">
-    <label class="label"> Desc</label>
-    <hr>
-    <%= a.description %>
+     Tagline: <b> <%= a.tags %></b> <br/>
+     Description:
+    <%= a.description %> 
     <hr>
   </div>
-  <%= form_with model: @answer.upvotes.build do |f| %>  
-  <%= f.hidden_field :answer_id, value: a.id %>
-  <%= f.hidden_field :count, value: a.upvotes.count %>
-  <%= f.submit "vote" ,  class: 'icon icon-upvote' %>
-<% end %>
-<%=  a.upvotes.count %>
-<%= a.created_at %>
-<% end %>
-
+    <% end %>
   </div>
 </div>
 

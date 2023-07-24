@@ -12,13 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2021_06_25_022436) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "answers", force: :cascade do |t|
     t.text "description"
     t.text "tags"
-    t.bigint "comment_id", null: false
+    t.integer "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
@@ -35,10 +32,10 @@ ActiveRecord::Schema.define(version: 2021_06_25_022436) do
   create_table "comments", force: :cascade do |t|
     t.text "title"
     t.text "description"
-    t.bigint "community_id", null: false
+    t.integer "community_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["community_id", "title", "description"], name: "index_comments_on_community_id_and_title_and_description"
     t.index ["community_id"], name: "index_comments_on_community_id"
     t.index ["id"], name: "index_comments_on_id"
@@ -48,10 +45,10 @@ ActiveRecord::Schema.define(version: 2021_06_25_022436) do
   create_table "communities", force: :cascade do |t|
     t.text "name"
     t.text "description"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "network_id"
+    t.integer "network_id"
     t.index ["name"], name: "index_communities_on_name"
     t.index ["network_id"], name: "index_communities_on_network_id"
     t.index ["user_id"], name: "index_communities_on_user_id"
@@ -73,14 +70,14 @@ ActiveRecord::Schema.define(version: 2021_06_25_022436) do
   create_table "networks", force: :cascade do |t|
     t.text "title"
     t.text "tagline"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_networks_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.bigint "community_id", null: false
+    t.integer "community_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["community_id"], name: "index_posts_on_community_id"
@@ -97,7 +94,7 @@ ActiveRecord::Schema.define(version: 2021_06_25_022436) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.text "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -109,21 +106,21 @@ ActiveRecord::Schema.define(version: 2021_06_25_022436) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_save_posts_on_user_id"
   end
 
   create_table "upvotes", force: :cascade do |t|
     t.integer "count"
-    t.bigint "answer_id", null: false
+    t.integer "answer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["answer_id"], name: "index_upvotes_on_answer_id"
   end
 
   create_table "user_roles", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "role_id", null: false
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["role_id"], name: "index_user_roles_on_role_id"

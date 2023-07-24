@@ -4,24 +4,8 @@ hi <%= current_user.email %> welcome to my page
 <% end %>
  <%= link_to "create community", communities_path %>
 
-<div class="box">
-    <%= form_with model: @code do |f| %>
-	<%= f.text_area :usercode, class: "textarea" ,placeholder: "Primary textarea" %>
-	<%= f.submit 'submit code' %>	
-	<% end %>
-</div>
-<% if @codes.present? %>
-<% @codes.each do |code| %>
 
-<!-- <p> <%= code.usercode %></p> -->
- <p><% if eval(code.usercode) %> </p> 
-        <%= eval(code.usercode) %>
-	<% else %>
-	<% rescue %>
-	<% end %>
 
-<% end %>
-<% end %>
 
 
    
