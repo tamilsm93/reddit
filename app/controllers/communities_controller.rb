@@ -13,9 +13,6 @@ class CommunitiesController < ApplicationController
                            .reverse.first(3).to_h     
        posts = Post.pluck(:community_id)
        @user_posts =  current_user.communities.user_comments(posts)
-
-       
-   
     end
 
     def submit
